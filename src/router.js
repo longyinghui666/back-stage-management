@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+
+// 组件引入
 // import Login from './components/Login.vue'
 const Login = () => import(/* webpackChunkName: "login_home_welcome" */ './components/Login.vue')
 // import Home from './components/Home.vue'
@@ -31,7 +33,8 @@ const Order = () => import(/* webpackChunkName: "Order_Report" */ './components/
 const Report = () => import(/* webpackChunkName: "Order_Report" */ './components/report/Report.vue')
 
 Vue.use(Router)
-
+// 定义组件规则
+// 创建路由实例
 const router = new Router({
   routes: [
     { path: '/', redirect: '/login' },
@@ -71,4 +74,5 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+// 暴露路由让外界使用
 export default router

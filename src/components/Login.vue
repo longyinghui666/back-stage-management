@@ -56,8 +56,10 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login() {
+      // 返回promise对象,用await简化操作
       this.$refs.loginFormRef.validate(async valid => {
         if (!valid) return
+        // 将data解构赋值，重命名为res
         const { data: res } = await this.$http.post('login', this.loginForm)
         if (res.meta.status !== 200) return this.$message.error('登录失败！')
         this.$message.success('登录成功')
@@ -122,3 +124,5 @@ export default {
   justify-content: flex-end;
 }
 </style>
+
+
